@@ -24,7 +24,9 @@ class _StoreListState extends State<StoreList> {
           ),
           title: Text('McDonalds'),
           subtitle: Text('McArthur Highway, Plaridel'),
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).pushNamed('/restoPage', arguments: 'heyhey');
+          },
         )));
   }
 
