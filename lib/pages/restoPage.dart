@@ -29,7 +29,12 @@ class RestoPage extends StatelessWidget {
         'https://thumbor.thedailymeal.com/snpqwZIspZdEuzx2xw_5qkrABx4=/870x565/filters:focal(859x480:860x481)/https://www.thedailymeal.com/sites/default/files/story/2018/mcdonaldsmain-dreamstime.JPG')
   ];
 
-  Widget _categoryWidget(String imgUrl, String name) {
+  Widget _categoryWidget(String imgUrl, String name, BuildContext context) {
+    void _goToRestoMenu(String name) {
+      Navigator.of(context).pushNamed('/restoMenuPage');
+      return;
+    }
+
     return Container(
         decoration: BoxDecoration(
             color: Colors.yellow[800],
@@ -40,7 +45,7 @@ class RestoPage extends StatelessWidget {
             child: InkWell(
                 splashColor: Colors.orange[200],
                 onTap: () {
-                  print('hey hey');
+                  _goToRestoMenu(name);
                 },
                 child: Center(
                     child: Text(
@@ -87,7 +92,7 @@ class RestoPage extends StatelessWidget {
                   mainAxisSpacing: 5,
                   childAspectRatio: (3 / 2),
                   children: _categories
-                      .map((e) => _categoryWidget(e.imgUrl, e.name))
+                      .map((e) => _categoryWidget(e.imgUrl, e.name, context))
                       .toList(),
                 ))
           ],

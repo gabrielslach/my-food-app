@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'pages/homePage.dart';
 import 'pages/restoPage.dart';
+import 'pages/restoMenuPage.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -9,15 +10,24 @@ class RouteGenerator {
 
     switch (settings.name) {
       case '/':
-        return MaterialPageRoute(builder: (_) => HomePage());
-      case '/restoPage':
-        if (args is String) {
-          return MaterialPageRoute(builder: (_) => RestoPage());
+        {
+          return MaterialPageRoute(builder: (_) => HomePage());
         }
-
-        return _errorRoute();
+      case '/restoPage':
+        {
+          if (args is String) {
+            return MaterialPageRoute(builder: (_) => RestoPage());
+          }
+          return _errorRoute();
+        }
+      case '/restoMenuPage':
+        {
+          return MaterialPageRoute(builder: (_) => RestoMenuPage());
+        }
       default:
-        return _errorRoute();
+        {
+          return _errorRoute();
+        }
     }
   }
 
